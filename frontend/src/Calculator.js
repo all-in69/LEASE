@@ -2,6 +2,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
+// --- POPRAWKA: Zdefiniowanie publicznego adresu API ---
+// Upewnij się, że ten adres URL jest poprawnym adresem Twojej aplikacji na Render
+const API_BASE_URL = 'https://lease-1.onrender.com';
+
 const VAT_RATE = 1.23;
 const CHART_COLORS = ['#0088FE', '#00C49F', '#FFBB28'];
 
@@ -26,8 +30,6 @@ const Calculator = () => {
     const [clientEmail, setClientEmail] = useState('');
     const [isProcessing, setIsProcessing] = useState(false);
     const [taxRate, setTaxRate] = useState(19);
-
-    // --- NOWY STAN DO POKAZYWANIA MARŻY ---
     const [showMargin, setShowMargin] = useState(false);
 
     const handleModeChange = (newMode) => setMode(newMode);
@@ -51,7 +53,8 @@ const Calculator = () => {
                 setResult(null);
                 return;
             }
-            endpoint = 'https://lease-1.onrender.com/api/calculate_rate';
+            // --- POPRAWKA: Użycie nowego adresu API ---
+            endpoint = `${API_BASE_URL}/api/calculate_rate`;
             const carValueNet = priceType === 'brutto' ? carValueNum / VAT_RATE : carValueNum;
             payload = {
                 wartosc_auta: carValueNet,
@@ -67,7 +70,8 @@ const Calculator = () => {
                 setResult(null);
                 return;
             }
-            endpoint = 'https://lease-1.onrender.com/api/calculate_value';
+            // --- POPRAWKA: Użycie nowego adresu API ---
+            endpoint = `${API_BASE_URL}/api/calculate_value`;
             const monthlyRateNet = priceType === 'brutto' ? monthlyRateNum / VAT_RATE : monthlyRateNum;
             payload = {
                 rata_miesieczna_netto: monthlyRateNet,
@@ -164,7 +168,8 @@ const Calculator = () => {
         };
 
         try {
-            const response = await fetch('https://lease-1.onrender.com/api/process_offer', {
+            // --- POPRAWKA: Użycie nowego adresu API ---
+            const response = await fetch(`${API_BASE_URL}/api/process_offer`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload),
@@ -232,7 +237,6 @@ const Calculator = () => {
                         </div>
                     )}
 
-                    {/* --- ZMIANA: CHECKBOX DO POKAZYWANIA MARŻY --- */}
                     <div className="form-group-inline">
                         <label>
                             <input
@@ -240,12 +244,10 @@ const Calculator = () => {
                                 checked={showMargin}
                                 onChange={(e) => setShowMargin(e.target.checked)}
                             />
-                             {/* Pusta etykieta, aby checkbox był klikalny */}
                              <span style={{marginLeft: '8px', fontStyle: 'italic', color: '#606770'}}>Pokaż opcje zaawansowane</span>
                         </label>
                     </div>
 
-                    {/* --- ZMIANA: WARUNKOWO RENDEROWANE POLE MARŻY --- */}
                     {showMargin && (
                         <div className="form-group">
                             <label>Marża (%)</label>
