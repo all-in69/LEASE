@@ -1,0 +1,14 @@
+# Pliki systemowe
+.DS_Store
+
+# Zależności i buildy frontendu
+frontend/node_modules
+frontend/build
+
+# Środowisko wirtualne Pythona
+venv/
+LEASE/
+
+# Pliki cache Pythona
+__pycache__/
+*.pyc

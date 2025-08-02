@@ -1,0 +1,225 @@
+/* src/App.css */
+body {
+    background-color: #f0f2f5;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+.calculator {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+}
+
+h1 {
+    text-align: center;
+    color: #1c1e21;
+    margin-bottom: 20px;
+}
+
+.mode-switcher {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+    background-color: #e7f3ff;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+.mode-switcher label {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.mode-switcher input[type="radio"] {
+    display: none;
+}
+
+.mode-switcher input[type="radio"]:checked + span {
+    background-color: #007bff;
+    color: white;
+    border-radius: 6px;
+    padding: 10px 20px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    color: #606770;
+    font-size: 14px;
+}
+
+.form-group input {
+    padding: 10px;
+    border: 1px solid #dddfe2;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.result-column {
+    background-color: #f7f8fa;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+}
+
+.result-box {
+    background: #fff;
+    border: 1px solid #dddfe2;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.result-box span {
+    display: block;
+}
+
+.result-box .result-value {
+    font-size: 28px;
+    font-weight: bold;
+    color: #007bff;
+    margin-top: 10px;
+}
+/* Dodaj na końcu pliku src/App.css */
+
+.label-switcher {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.unit-toggle {
+    display: flex;
+    border: 1px solid #dddfe2;
+    border-radius: 6px;
+}
+
+.unit-toggle button {
+    background: none;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #606770;
+}
+
+.unit-toggle button.active {
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+}
+
+.unit-toggle button:disabled {
+    background-color: #e9ebee;
+    cursor: not-allowed;
+    color: #bec3c9;
+}
+/* Dodaj na końcu pliku src/App.css */
+
+.result-secondary {
+    font-size: 16px;
+    color: #606770;
+    margin-top: 5px;
+}
+/* Dodaj na końcu pliku src/App.css */
+
+.pdf-button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.pdf-button:hover {
+    background-color: #218838;
+}
+
+.pdf-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+/* Dodaj na końcu pliku src/App.css */
+.email-section {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #f7f8fa;
+    border: 1px solid #dddfe2;
+    border-radius: 6px;
+    text-align: left;
+}
+
+.email-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.email-checkbox input {
+    margin-right: 10px;
+}
+
+.email-input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box; /* Ważne, aby padding nie rozszerzał pola */
+}
+/* Dodaj na końcu pliku src/App.css */
+.extra-results {
+    margin-top: 20px;
+}
+
+.tax-shield {
+    background-color: #e7f3ff;
+    border: 1px solid #007bff;
+    border-radius: 6px;
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.tax-shield h4 {
+    margin: 0 0 10px 0;
+    color: #0056b3;
+}
+
+.chart-container {
+    text-align: center;
+}
+
+.chart-container h4 {
+    margin-bottom: 10px;
+    color: #606770;
+}
+/* Dodaj na końcu pliku src/App.css */
+.form-group-inline {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    cursor: pointer;
+}

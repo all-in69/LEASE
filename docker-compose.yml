@@ -1,0 +1,25 @@
+# docker-compose.yml
+
+version: '3.8'
+
+services:
+  # --- Usługa dla Backendu (Python/Flask) ---
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "5000:5000" # Mapuje port 5000 z kontenera na port 5000 na Twoim komputerze
+    restart: unless-stopped # Automatycznie restartuje kontener, jeśli się zatrzyma
+
+  # --- Usługa dla Frontendu (React/Nginx) ---
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "80:80" # Mapuje port 80 z kontenera na port 80 na Twoim komputerze
+    depends_on:
+      - backend # Frontend uruchomi się dopiero, gdy backend będzie gotowy
+    restart: unless-stopped
+

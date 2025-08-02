@@ -1,0 +1,31 @@
+# Dockerfile.frontend
+
+# --- ETAP 1: Budowanie aplikacji React ---
+FROM node:18-alpine AS build
+
+# Ustaw katalog roboczy wewnątrz kontenera
+WORKDIR /app
+
+# Skopiuj pliki package.json i package-lock.json
+COPY frontend/package*.json ./
+
+# Zainstaluj wszystkie zależności
+RUN npm install
+
+# Skopiuj resztę plików aplikacji frontendowej
+COPY frontend/ ./
+
+# Zbuduj produkcyjną wersję aplikacji
+RUN npm run build
+
+# --- ETAP 2: Serwowanie zbudowanych plików za pomocą Nginx ---
+FROM nginx:1.21-alpine
+
+# Skopiuj zbudowane pliki z etapu 'build' do folderu serwera Nginx
+COPY --from=build /app/build /usr/share/nginx/html
+
+# Wystaw port 80, na którym domyślnie działa Nginx
+EXPOSE 80
+
+# Komenda startowa dla kontenera Nginx
+CMD ["nginx", "-g", "daemon off;"]

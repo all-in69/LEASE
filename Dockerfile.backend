@@ -1,0 +1,21 @@
+# Dockerfile.backend
+
+# Krok 1: Użyj oficjalnego, lekkiego obrazu Python jako bazy
+FROM python:3.10-slim
+
+# Krok 2: Ustaw katalog roboczy wewnątrz kontenera
+WORKDIR /app
+
+# Krok 3: Skopiuj plik z zależnościami i zainstaluj je
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Krok 4: Skopiuj resztę plików aplikacji do kontenera
+COPY . .
+
+# Krok 5: Wystaw port, na którym będzie działać aplikacja
+EXPOSE 5000
+
+# Krok 6: Zdefiniuj komendę, która uruchomi aplikację
+# Używamy Gunicorn, który jest serwerem produkcyjnym dla aplikacji Flask
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
