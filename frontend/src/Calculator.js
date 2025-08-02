@@ -51,7 +51,7 @@ const Calculator = () => {
                 setResult(null);
                 return;
             }
-            endpoint = 'http://127.0.0.1:5000/api/calculate_rate';
+            endpoint = 'https://lease-1.onrender.com/api/calculate_rate';
             const carValueNet = priceType === 'brutto' ? carValueNum / VAT_RATE : carValueNum;
             payload = {
                 wartosc_auta: carValueNet,
@@ -67,7 +67,7 @@ const Calculator = () => {
                 setResult(null);
                 return;
             }
-            endpoint = 'http://127.0.0.1:5000/api/calculate_value';
+            endpoint = 'https://lease-1.onrender.com/api/calculate_value';
             const monthlyRateNet = priceType === 'brutto' ? monthlyRateNum / VAT_RATE : monthlyRateNum;
             payload = {
                 rata_miesieczna_netto: monthlyRateNet,
@@ -164,7 +164,7 @@ const Calculator = () => {
         };
 
         try {
-            const response = await fetch('http://127.0.0.1:5000/api/process_offer', {
+            const response = await fetch('https://lease-1.onrender.com/api/process_offer', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload),
